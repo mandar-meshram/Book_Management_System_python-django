@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .authors-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .author-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .author-item {
+            padding: 1rem;
+            margin: 0.75rem 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .author-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .author-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #2d3748;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: #6b7280;
+        }
+
+        .add-author-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .add-author-btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-icon {
+            margin-right: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="authors-container">
+        <h1 class="text-center mb-4">Authors List</h1>
+
+        <ul class="author-list">
+            {% for author in author%}
+            <li class="author-item">
+                <span class="author-name">{{ author.name }}</span>
+                <div>
+                    <form action="{% url 'deleteAuthor' author.id %}" method="POST" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete {{ author.name }}?')">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </form>
+                </div>
+            </li>
+            {% empty %}
+            <li class="empty-state">
+                <i class="fas fa-exclamation-triangle fa-2x mb-3"></i>
+                <p>No authors found.</p>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'addauthor' %}" class="add-author-btn">
+                <i class="fas fa-plus-circle btn-icon"></i>
+                Add New Author
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

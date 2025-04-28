@@ -1,0 +1,20 @@
+📚 Book Management System
+Welcome to my Book Management System, a Django-based project I developed to demonstrate my skills in backend web development, database modeling, and form handling. 🚀
+
+This project focuses on building a solid and efficient backend for managing books, authors, and genres, with full CRUD (Create, Read, Update, Delete) functionality. While the frontend design is kept minimal 🎨, the core emphasis is on the robustness and correctness of the backend logic. ⚙️
+
+🔨 What I Built:-
+📖 Comprehensive CRUD operations for books, authors, and genres, allowing seamless creation, retrieval, updating, and deletion of records.
+👨‍🏫 One-to-Many relationships between authors and books, enabling each author to be linked to multiple books.
+🔗 Many-to-Many relationships between books and genres, allowing books to belong to multiple genres and vice versa.
+📝 Utilized Django’s form system extensively to manage user input and validation cleanly and securely.
+🌐 Designed a clear and maintainable URL routing structure with proper redirections after form submissions to enhance user experience.
+⚙️ Focused on backend functionality, ensuring that the application logic is solid and scalable, rather than on frontend aesthetics.
+
+
+Technologies & Tools:- 
+Python 3.x
+Django 4.x
+SQLite (default database)
+Bootstrap 5 (for basic styling)
+Font Awesome (for icons)
